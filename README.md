@@ -41,10 +41,10 @@ In order to spin up the docker-compose cluster, build the images using the `befo
 
 This initializes the necessary hadoop services such as a namenode, datanode, hive server, hive metastore; along with the service that will execute the test (`test-executor`).
 
-Use the script `utils/restart.sh` to restart the docker-compose cluster.
+Use the script `util/restart.sh` to restart the docker-compose cluster.
 
 If you want to test code interactively, add the line `command: sleep 365d` in `docker-compose.yml` under `test-executor` (this will make the service not execute the default `startup.py` script, and instead remain idle).
-Then, restart the cluster (`utils/restart.sh`) and execute code from the `test-executor` service with the following commands:
+Then, restart the cluster (`util/restart.sh`) and execute code from the `test-executor` service with the following commands:
 
     docker-compose exec test-executor bash  # Open a shell inside `test-executor`
     python  # Open a Python interpreter

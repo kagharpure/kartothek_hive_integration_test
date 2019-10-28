@@ -17,10 +17,14 @@ RUN conda install -y pyhive
 # Show version information of packages
 RUN conda list
 
-COPY startup.py /usr/local/bin/
+ENV FOR_CI = "True"
+
+COPY test_executor/startup.py /usr/local/bin/
 RUN chmod +x /usr/local/bin/startup.py
 
-COPY entrypoint.sh /usr/local/bin/
+COPY common.sh /usr/local/bin/
+
+COPY test_executor/entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["entrypoint.sh"]
